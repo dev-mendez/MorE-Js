@@ -83,3 +83,30 @@ arr.forEach((element, index) => {
 let sum = (a) => (b) => a + b;
 
 console.log(sum(2)(28));
+
+const s = '12:15:45PM';
+
+// // It should return a new string representing the input time in 24 hour format.
+
+const timeConversion = function (s) {
+  let time = s.split(':');
+  let hh = parseInt(time.slice(0, 1));
+  let mm = time.slice(1, 2);
+  let ss = time.slice(2, 3);
+  if (JSON.stringify(ss).includes('AM') & (hh === 12)) {
+    hh = '00';
+  } else {
+    hh =
+      JSON.stringify(ss).includes('PM') & (hh != 12)
+        ? hh + 12
+        : hh < 10
+        ? '0' + hh
+        : hh;
+  }
+
+  ss = JSON.stringify(ss).slice(2, 4);
+
+  return `${hh}:${mm}:${ss}` 
+};
+
+console.log(timeConversion(s));
